@@ -1,4 +1,3 @@
-'''
 def encrypt(plaintext, key):
     result = ""
     for char in plaintext:
@@ -29,4 +28,5 @@ if __name__ == "__main__":
     print("Plaintext :", message)
     print("Ciphertext:", enc)
     print("Decrypted :", dec)
-'''
+
+
