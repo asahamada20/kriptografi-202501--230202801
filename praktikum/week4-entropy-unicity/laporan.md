@@ -133,12 +133,26 @@ Contoh:
 ---
 
 ## 10. Commit Log
-(Tuliskan bukti commit Git yang relevan.  
-Contoh:
-```
-commit abc12345
-Author: Nama Mahasiswa <email>
-Date:   2025-09-20
+commit f0fff3256cfd82ec4155ff64d2eacbe64ad2e1e9 (HEAD -> main, origin/main, origin/HEAD)
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Mon Nov 17 00:24:58 2025 +0700
 
-    week2-cryptosystem: implementasi Caesar Cipher dan laporan )
+    Add files via upload
+
+commit 608bfbf3c2164fcdae12298889635039290c6b9c
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Mon Nov 17 00:24:36 2025 +0700
+
+    Create .png
+
+commit 66875f937758622560e9fcf974b5297ce79c8bae
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Mon Nov 17 00:24:06 2025 +0700
+
+    Delete praktikum/week4-entropy-unicity/src directory
+
+commit 97dc03e566f36f9af782fe957c8e1e02a92530aa
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Mon Nov 17 00:22:29 2025 +0700
+
 ```
