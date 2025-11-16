@@ -132,12 +132,40 @@ Contoh:
 ---
 
 ## 10. Commit Log
-(Tuliskan bukti commit Git yang relevan.  
-Contoh:
-```
-commit abc12345
-Author: Nama Mahasiswa <email>
-Date:   2025-09-20
+commit 418251f97d57da1c59ff2dceb457907e0c1bc968
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Sun Nov 16 23:50:34 2025 +0700
 
-    week2-cryptosystem: implementasi Caesar Cipher dan laporan )
+    Create MOD MATH1.PNG
+
+commit c33c30d304eed36552214b17f33fb7f070d43ee3
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Sun Nov 16 23:48:35 2025 +0700
+
+    Update and rename code-example.py to Modular_math.py
+
+commit 87ace50041a739299115565c852f07ac55c03f40
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Sun Nov 16 23:48:08 2025 +0700
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Sun Nov 16 23:50:54 2025 +0700
+
+    Add files via upload
+
+commit 418251f97d57da1c59ff2dceb457907e0c1bc968
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Sun Nov 16 23:50:34 2025 +0700
+
+    Create MOD MATH1.PNG
+
+commit c33c30d304eed36552214b17f33fb7f070d43ee3
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Sun Nov 16 23:48:35 2025 +0700
+
+    Update and rename code-example.py to Modular_math.py
+
+commit 87ace50041a739299115565c852f07ac55c03f40
+Author: asahamada20 <164310674+asahamada20@users.noreply.github.com>
+Date:   Sun Nov 16 23:48:08 2025 +0700
+
 ```
