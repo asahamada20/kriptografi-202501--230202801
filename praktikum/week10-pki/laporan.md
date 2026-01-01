@@ -1,20 +1,22 @@
 # Laporan Praktikum Kriptografi
-Minggu ke-: X  
-Topik: [judul praktikum]  
-Nama: [Nama Mahasiswa]  
-NIM: [NIM Mahasiswa]  
-Kelas: [Kelas]  
+Minggu ke-: 10 
+Topik: Public Key Infrastructure (PKI & Certificate Authority)
+Nama: Asadila Haila Hamada 
+NIM: 23002801
+Kelas: 5 IKRA
 
 ---
 
 ## 1. Tujuan
-(Tuliskan tujuan pembelajaran praktikum sesuai modul.)
-
+1. Membuat sertifikat digital sederhana.
+2. Menjelaskan peran Certificate Authority (CA) dalam sistem PKI.
+3. Mengevaluasi fungsi PKI dalam komunikasi aman (contoh: HTTPS, TLS).
 ---
 
 ## 2. Dasar Teori
-(Ringkas teori relevan (cukup 2–3 paragraf).  
-Contoh: definisi cipher klasik, konsep modular aritmetika, dll.  )
+Public Key Infrastructure (PKI) merupakan kerangka kerja yang mengatur pengelolaan sertifikat digital, mulai dari penerbitan hingga pencabutan, guna menjamin keamanan komunikasi. Sistem ini memanfaatkan pasangan kunci publik dan privat, di mana sertifikat digital digunakan untuk mengaitkan identitas dengan kunci publik dan dikeluarkan oleh pihak tepercaya.
+
+Certificate Authority (CA) berperan sebagai lembaga yang memverifikasi identitas dan menandatangani sertifikat digital. Kepercayaan terhadap CA ditanamkan pada browser dan sistem operasi melalui daftar root CA, sehingga komunikasi seperti HTTPS/TLS dapat memastikan keaslian server dan melindungi pengguna dari serangan perantara seperti Man-in-the-Middle.
 
 ---
 
@@ -36,13 +38,40 @@ Contoh format:
 ---
 
 ## 5. Source Code
-(Salin kode program utama yang dibuat atau dimodifikasi.  
-Gunakan blok kode:
-
 ```python
-# contoh potongan kode
-def encrypt(text, key):
-    return ...
+from cryptography import x509
+from cryptography.x509.oid import NameOID
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
+from datetime import datetime, timedelta
+
+# Generate key pair
+key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+
+# Buat subject & issuer (CA sederhana = self-signed)
+subject = issuer = x509.Name([
+    x509.NameAttribute(NameOID.COUNTRY_NAME, u"ID"),
+    x509.NameAttribute(NameOID.ORGANIZATION_NAME, u"UPB Kriptografi"),
+    x509.NameAttribute(NameOID.COMMON_NAME, u"example.com"),
+])
+
+# Buat sertifikat
+cert = (
+    x509.CertificateBuilder()
+    .subject_name(subject)
+    .issuer_name(issuer)
+    .public_key(key.public_key())
+    .serial_number(x509.random_serial_number())
+    .not_valid_before(datetime.utcnow())
+    .not_valid_after(datetime.utcnow() + timedelta(days=365))
+    .sign(key, hashes.SHA256())
+)
+
+# Simpan sertifikat
+with open("cert.pem", "wb") as f:
+    f.write(cert.public_bytes(serialization.Encoding.PEM))
+
+print("Sertifikat digital berhasil dibuat: cert.pem")
 ```
 )
 
@@ -64,14 +93,18 @@ Hasil eksekusi program Caesar Cipher:
 ---
 
 ## 7. Jawaban Pertanyaan
-(Jawab pertanyaan diskusi yang diberikan pada modul.  
-- Pertanyaan 1: …  
-- Pertanyaan 2: …  
-)
+1. Fungsi utama Certificate Authority (CA)
+Certificate Authority berperan sebagai lembaga tepercaya yang melakukan verifikasi identitas pemilik kunci publik dan menerbitkan sertifikat digital, sehingga kunci tersebut dapat digunakan secara aman dalam komunikasi.
+
+2. Alasan self-signed certificate tidak sesuai untuk sistem produksi
+Self-signed certificate tidak melalui proses validasi oleh CA resmi, sehingga keaslian identitasnya tidak dapat dipastikan. Hal ini menyebabkan munculnya peringatan keamanan pada browser dan membuatnya kurang aman untuk digunakan di lingkungan produksi.
+
+3. Peran PKI dalam mencegah serangan MITM pada TLS/HTTPS
+PKI melindungi komunikasi TLS/HTTPS dengan memastikan sertifikat server divalidasi oleh CA yang dipercaya. Dengan demikian, kunci publik yang digunakan benar-benar milik server yang sah dan penyerang tidak dapat menyamar sebagai pihak lain.
 ---
 
 ## 8. Kesimpulan
-(Tuliskan kesimpulan singkat (2–3 kalimat) berdasarkan percobaan.  )
+Dalam praktikum ini, mahasiswa berhasil mengimplementasikan pembuatan sertifikat digital sederhana menggunakan Python. Percobaan tersebut membantu memahami peran Certificate Authority dalam membangun kepercayaan, serta bagaimana PKI mendukung komunikasi aman seperti HTTPS. Hasilnya menunjukkan bahwa PKI sangat penting dalam menjaga integritas, keaslian, dan kerahasiaan data.
 
 ---
 
