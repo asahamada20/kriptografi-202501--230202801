@@ -1,9 +1,9 @@
 # Laporan Praktikum Kriptografi
-Minggu ke-: X  
-Topik: [judul praktikum]  
-Nama: [Nama Mahasiswa]  
-NIM: [NIM Mahasiswa]  
-Kelas: [Kelas]  
+Minggu ke-: 7
+Topik: Diffie-Hellman Key Exchange
+Nama: Asadila Haila Hamada  
+NIM: 230202801
+Kelas: 5 IKRA
 
 ---
 
