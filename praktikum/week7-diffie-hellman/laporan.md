@@ -8,13 +8,15 @@ Kelas: [Kelas]
 ---
 
 ## 1. Tujuan
-(Tuliskan tujuan pembelajaran praktikum sesuai modul.)
+1. Melakukan simulasi protokol Diffie-Hellman untuk pertukaran kunci publik.
+2. Menjelaskan mekanisme pertukaran kunci rahasia menggunakan bilangan prima dan logaritma diskrit.
+3. Menganalisis potensi serangan pada protokol Diffie-Hellman (termasuk serangan Man-in-the-Middle / MITM).
+
 
 ---
 
 ## 2. Dasar Teori
-(Ringkas teori relevan (cukup 2–3 paragraf).  
-Contoh: definisi cipher klasik, konsep modular aritmetika, dll.  )
+Diffie–Hellman Key Exchange adalah protokol kriptografi yang memungkinkan dua pihak membentuk kunci rahasia bersama melalui saluran publik tanpa mengirimkan kunci tersebut secara langsung. Keamanannya bergantung pada operasi eksponensial modular dan sulitnya Discrete Logarithm Problem, sehingga kunci privat tidak dapat dengan mudah ditebak dari nilai publik. Protokol ini banyak digunakan dalam sistem keamanan modern seperti TLS, namun versi dasarnya tidak menyediakan autentikasi sehingga rentan terhadap serangan Man-in-the-Middle jika tidak disertai mekanisme verifikasi identitas.
 
 ---
 
@@ -36,14 +38,30 @@ Contoh format:
 ---
 
 ## 5. Source Code
-(Salin kode program utama yang dibuat atau dimodifikasi.  
-Gunakan blok kode:
 
 ```python
-# contoh potongan kode
-def encrypt(text, key):
-    return ...
+import random
+
+# parameter umum (disepakati publik)
+p = 23  # bilangan prima
+g = 5   # generator
+
+# private key masing-masing pihak
+a = random.randint(1, p-1)  # secret Alice
+b = random.randint(1, p-1)  # secret Bob
+
+# public key
+A = pow(g, a, p)
+B = pow(g, b, p)
+
+# exchange public key
+shared_secret_A = pow(B, a, p)
+shared_secret_B = pow(A, b, p)
+
+print("Kunci bersama Alice :", shared_secret_A)
+print("Kunci bersama Bob   :", shared_secret_B)
 ```
+
 )
 
 ---
@@ -64,14 +82,18 @@ Hasil eksekusi program Caesar Cipher:
 ---
 
 ## 7. Jawaban Pertanyaan
-(Jawab pertanyaan diskusi yang diberikan pada modul.  
-- Pertanyaan 1: …  
-- Pertanyaan 2: …  
-)
+1. Mengapa Diffie–Hellman dapat digunakan di saluran publik?
+Diffie–Hellman memungkinkan pertukaran kunci di saluran publik karena kunci rahasia tidak pernah dikirimkan secara langsung. Kedua pihak hanya bertukar nilai publik, sementara kunci bersama dihasilkan secara lokal dan keamanannya dijamin oleh sulitnya Discrete Logarithm Problem.
+
+2. Kelemahan utama Diffie–Hellman murni
+Kelemahan utama protokol Diffie–Hellman murni adalah tidak adanya mekanisme autentikasi, sehingga rentan terhadap serangan Man-in-the-Middle, di mana penyerang dapat menyamar sebagai pihak yang sah.
+
+3. Cara mencegah serangan MITM pada Diffie–Hellman
+Serangan MITM dapat dicegah dengan menambahkan autentikasi, seperti penggunaan sertifikat digital, tanda tangan digital, atau dengan mengintegrasikan Diffie–Hellman ke dalam protokol yang terautentikasi seperti TLS.
 ---
 
 ## 8. Kesimpulan
-(Tuliskan kesimpulan singkat (2–3 kalimat) berdasarkan percobaan.  )
+Praktikum ini membuktikan bahwa Diffie–Hellman mampu membentuk kunci bersama melalui jaringan publik karena sulitnya menyelesaikan masalah logaritma diskrit. Namun, tanpa mekanisme autentikasi, protokol dasarnya tetap rentan terhadap serangan MITM, sehingga penerapan nyata harus menggunakan Diffie–Hellman yang dilengkapi proses verifikasi identitas.
 
 ---
 
