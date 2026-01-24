@@ -1,20 +1,24 @@
 # Laporan Praktikum Kriptografi
-Minggu ke-: X  
-Topik: [judul praktikum]  
-Nama: [Nama Mahasiswa]  
-NIM: [NIM Mahasiswa]  
-Kelas: [Kelas]  
+Minggu ke-: 14 
+Topik: Analisis Serangan Kriptografi
+Nama: Asadila Haila Hamada  
+NIM: 230202801  
+Kelas: 5IKRA  
 
 ---
 
 ## 1. Tujuan
-(Tuliskan tujuan pembelajaran praktikum sesuai modul.)
+1. Mengidentifikasi jenis serangan pada sistem informasi nyata.
+2. Mengevaluasi kelemahan algoritma kriptografi yang digunakan.
+3. Memberikan rekomendasi algoritma kriptografi yang sesuai untuk perbaikan keamanan.
+
 
 ---
 
 ## 2. Dasar Teori
-(Ringkas teori relevan (cukup 2–3 paragraf).  
-Contoh: definisi cipher klasik, konsep modular aritmetika, dll.  )
+Serangan kriptografi adalah upaya memanfaatkan kelemaahan dalam algortima, implementasi atau pengelolaan kunci untuk mengakses data rahasia secara ilegal. Jenis serangan yang umum anatara lain adalah brute force yang mencoba satu satu hingga menemukan kunci nya, kemudian ada man in the middle dan replat attack.
+
+Analisis keamanan kriptografi harus memperhatikan tidak hanya algoritma, tetapi juga bagaimana sistem diimplementasikan dan dikelola
 
 ---
 
@@ -27,11 +31,18 @@ Contoh: definisi cipher klasik, konsep modular aritmetika, dll.  )
 ---
 
 ## 4. Langkah Percobaan
-(Tuliskan langkah yang dilakukan sesuai instruksi.  
-Contoh format:
-1. Membuat file `caesar_cipher.py` di folder `praktikum/week2-cryptosystem/src/`.
-2. Menyalin kode program dari panduan praktikum.
-3. Menjalankan program dengan perintah `python caesar_cipher.py`.)
+# Langkah 1 — Identifikasi Serangan
+Pilih salah satu kasus nyata serangan kriptografi (contoh: serangan brute force pada hash MD5, kebocoran SSL/TLS, serangan dictionary password).
+Identifikasi vektor serangan dan penyebab kelemahan.
+
+# Langkah 2 — Evaluasi Kelemahan
+Analisis kelemahan algoritma yang digunakan.
+Apakah kelemahan ada pada algoritma kriptografi, implementasi, atau konfigurasi sistem?
+
+# Langkah 3 — Rekomendasi Solusi
+Usulkan algoritma atau mekanisme yang lebih aman.
+Contoh: mengganti MD5 → SHA-256, RSA lama → ECC, password plaintext → bcrypt/scrypt/Argon2.
+Jelaskan alasan pemilihan algoritma dan dampaknya terhadap keamanan sistem
 
 ---
 
@@ -64,14 +75,13 @@ Hasil eksekusi program Caesar Cipher:
 ---
 
 ## 7. Jawaban Pertanyaan
-(Jawab pertanyaan diskusi yang diberikan pada modul.  
-- Pertanyaan 1: …  
-- Pertanyaan 2: …  
-)
+1. Sistem lama rentan terhadap brute force atau dictionary attack karena menggunakan kunci yang pendek, algortima lemaha atau protokol yang mudah untuk ditebak atau dipecahkan
+2. Kelamahan algortima adalah celah pada desain matematis metode kriptografi itu sendiri, sedangkan kelemahan implementasi adalah kesalahan dalam penerapan algortima, seperti pengelolaan kunci yang buruk atau penggunaan random generator yang tidak aman
+3. Organisasi dapat menjaga keamanan sistem kriptografi dengan rutin memperbarui algoritma dan protokol, melakukan audit keamanan, mengelola kunci dengan baik serta mengikuti standar dan praktik terbaik keamanan terbaru 
 ---
 
 ## 8. Kesimpulan
-(Tuliskan kesimpulan singkat (2–3 kalimat) berdasarkan percobaan.  )
+Percobaan brute force dan dictionary attack pada hash MD5 menunjukkan bahwa algoritma hash yang cepat dan tanpa proteksi tambahan sangat mudah diserang secara offline. Password atau PIN dengan kemungkinan terbatas bisa dengan cepat ditemukan. Oleh karena itu, sistem modern disarankan menggunakan algoritma pengamanan password seperti bcrypt atau Argon2 untuk meningkatkan keamanan.
 
 ---
 
