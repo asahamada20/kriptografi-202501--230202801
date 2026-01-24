@@ -1,20 +1,23 @@
 # Laporan Praktikum Kriptografi
-Minggu ke-: X  
-Topik: [judul praktikum]  
-Nama: [Nama Mahasiswa]  
-NIM: [NIM Mahasiswa]  
-Kelas: [Kelas]  
+Minggu ke-: 12 
+Topik: Aplikasi TLS & E-commerce 
+Nama: Asadila Haila Hamada 
+NIM: 230202801 
+Kelas: 5IKRA 
 
 ---
 
 ## 1. Tujuan
-(Tuliskan tujuan pembelajaran praktikum sesuai modul.)
+1. Menganalisis penggunaan kriptografi pada email dan SSL/TLS.
+2. Menjelaskan enkripsi dalam transaksi e-commerce.
+3. Mengevaluasi isu etika & privasi dalam penggunaan kriptografi di kehidupan sehari-hari.
 
 ---
 
 ## 2. Dasar Teori
-(Ringkas teori relevan (cukup 2–3 paragraf).  
-Contoh: definisi cipher klasik, konsep modular aritmetika, dll.  )
+Transport Layer Security adalah protokol keamanan yang melindungi komunikasi data di internet melalui enkripsi, autentikasi, dan penjagaan integritas data. Dengan mengenkripsi pertukaran data antara klien dan server, TLS mencegah pihak tidak berwenang mengakses informasi sensitif seperti kredensial login dan data transaksi, serta memastikan keaslian server melalui sertifikat digital
+
+Dalam e-commerce, TLS berperan penting karena seluruh proses transaksi melibatkan data rahasia. Penggunaan TLS melindungi sistem dari serangan seperti penyadapan dan man in the middle, menjamin data tidak diubah selama transisi, serta meningkatkan kepercayaan pengguna dan kredibilitas platform e-commerce 
 
 ---
 
@@ -27,11 +30,24 @@ Contoh: definisi cipher klasik, konsep modular aritmetika, dll.  )
 ---
 
 ## 4. Langkah Percobaan
-(Tuliskan langkah yang dilakukan sesuai instruksi.  
-Contoh format:
-1. Membuat file `caesar_cipher.py` di folder `praktikum/week2-cryptosystem/src/`.
-2. Menyalin kode program dari panduan praktikum.
-3. Menjalankan program dengan perintah `python caesar_cipher.py`.)
+# Langkah 1 — Analisis SSL/TLS pada Email & Web
+Gunakan browser (Chrome/Firefox) untuk mengecek sertifikat digital pada website e-commerce (contoh: Tokopedia, Shopee, Bukalapak).
+Catat informasi berikut:
+Issuer CA (Certificate Authority).
+Masa berlaku sertifikat.
+Algoritma enkripsi yang digunakan (RSA, AES, dll).
+Bandingkan perbedaan antara website dengan HTTPS dan tanpa HTTPS.
+
+# Langkah 2 — Studi Kasus E-commerce
+Analisis bagaimana enkripsi digunakan untuk melindungi transaksi online (misalnya saat login atau melakukan pembayaran).
+Diskusikan potensi ancaman jika TLS tidak digunakan (contoh: serangan Man-in-the-Middle).
+
+# Langkah 3 — Analisis Etika & Privasi
+Identifikasi isu privasi dalam penggunaan email terenkripsi (PGP, S/MIME).
+Diskusikan dilema etika:
+Apakah perusahaan boleh melakukan dekripsi email karyawan untuk audit?
+Bagaimana kebijakan pemerintah dalam pengawasan komunikasi terenkripsi?
+
 
 ---
 
@@ -64,14 +80,13 @@ Hasil eksekusi program Caesar Cipher:
 ---
 
 ## 7. Jawaban Pertanyaan
-(Jawab pertanyaan diskusi yang diberikan pada modul.  
-- Pertanyaan 1: …  
-- Pertanyaan 2: …  
-)
+1. Perbedaanya teletak pada keamaaanya. HTTP mengirimkan data tanpa enkripsi sehingga mudah disadap, sedangkan HTTPS menggunakan TLS untuk mengenkripsi komunikasi sehingga data lebih aman dari akses yang tidak valid atau tidak sah
+2. Pentingnya sertifikast digital dalam TLS adalah untuk memverifikasi identitas server yang di akses
+3. Peran kriptografi dalam privasi sekaligus tantangan hukum etika adalah kemampuanya melindungi kerahasiaan data dan komunikasi pengguna, namun disisi lain dapat menyulitkan penegak hukum karena data yang terenkripsi sulit untuk diakses, sehingga menimbulkan dilema antara perlindungan privasi dan kepentingan keamanan publik
 ---
 
 ## 8. Kesimpulan
-(Tuliskan kesimpulan singkat (2–3 kalimat) berdasarkan percobaan.  )
+Enkripsi seperti TLS membuat data login dan transaksi terlindungi dari penyadapan dan manipulasi. Tanpa enkripsi, komunikasi rentan terhadap serangan man in the middle. Oleh karena itu, TLS penting untuk menjaga keamanan transaksi online dan meningkatkan kepercayaan pengguna
 
 ---
 
